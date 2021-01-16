@@ -63,10 +63,10 @@
     resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
   }
 
-  function showSlide(n) {
+  function showSlide(show) {
     slides[currentSlide].classList.remove('active-slide');
-    slides[n].classList.add('active-slide');
-    currentSlide = n;
+    slides[show].classList.add('active-slide');
+    currentSlide = show;
     if(currentSlide === 0){
       previousButton.style.display = 'none';
     }
@@ -74,6 +74,7 @@
       previousButton.style.display = 'inline-block';
     }
     if(currentSlide === slides.length-1){
+      // startButton.style.display = 'none';
       nextButton.style.display = 'none';
       submitButton.style.display = 'inline-block';
     }
@@ -126,10 +127,11 @@
        
   ];
 
-  // Kick things off
+
   buildQuiz();
 
   // Pagination
+  // var startButton = document.getElementById("start");
   var previousButton = document.getElementById("previous");
   var nextButton = document.getElementById("next");
   var slides = document.querySelectorAll(".slide");
@@ -139,6 +141,7 @@
   showSlide(currentSlide);
 
   // Event listeners
+  // startButton.addEventListener('click', startTimer)
   submitButton.addEventListener('click', showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
+  previousButton.addEventListener('click', showPreviousSlide);
+  nextButton.addEventListener('click', showNextSlide);
